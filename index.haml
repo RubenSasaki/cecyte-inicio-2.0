@@ -1,0 +1,114 @@
+-gallery_imgs = ["DSCF0302.jpg","DSCN1332.jpg","DSCN1592.jpg","1.jpg","DSCF0302.jpg","DSCN1332.jpg"]
+!!!5
+%html{class:"no-js", lang:"es"}
+  %head
+    %meta{charset:"utf-8"}
+    %title CECYTE web
+    %meta{name:"description", content:"es una plataforma educativa que ayuda a la interaccion entre alumnos y profesores para una mejor comunicacion y educacion."}
+    %link{href:'https://fonts.googleapis.com/css?family=dancing+script', rel:'stylesheet', type:'text/css '}
+    %link{href:'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,700', rel:'stylesheet', type:'text/css'}
+    %link{rel:"stylesheet", href:"css/normalize.css"}
+    %link{rel:"stylesheet", href:"css/bootstrap.css"}
+    %link{rel:"stylesheet", href:"css/flexboxgrid.css"}
+    %link{rel:"stylesheet", href:"css/estilos.css"}
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1"}
+    %meta{:"data-name" => "image-counter", content:"#{gallery_imgs.size - 1}"}
+    %script{src:"js/vendor/modernizr-3.5.0.min.js"}
+  %body
+    ="<!--[if lt IE 9]>"
+    %p{class:"browserupgrade"}
+      Estas usando un navegador
+      %strong desactualizado.
+      por favor
+      %a{href:"http://browsehappy.com/"}
+        actualiza tu navegador
+      para una mejor experiencia
+    ="<![endif]-->"
+    .video-container
+      %video{autoplay:true, loop:true,width:"1280",height:"720",poster:"/videos/img/video1.jpg"}
+        %source{src:"/videos/mp4/video1.mp4", typ:"video/mp4"}
+        %source{src:"/videos/webm/video1.webm", typ:"video/webm" }
+    .row.full-height.middle-xs.center-xs.relative.up#home
+      .col-xs-12
+        .box.white-text
+          %img{src:"/videos/img/icon1.png", width:"200px",}
+          %h1.title.no-margin CECYTE web
+          %p.medium
+            %i.glyphicon.glyphicon-education
+            conectate al mundo de la educación.
+      %nav.fixed.top.right.navigation.white-text#navigation 
+        -menu = ["Inicio","Galeria","Iniciar sesion","Contacto","Como llegar"]
+        %ul.list-inline
+          -menu.each do |item| 
+            %li
+              %a{}= item
+      .absolute.rgb-verde.large-padding.white-text.full-width#description
+        .row.middle-xs.center-xs
+          .col-xs-7.col-sm-6.white-text.medium
+            La opción del futuro en el presente
+          .col-xs.hidden#sticky-navigation
+            .box 
+              %nav.text-right.navigation
+                %ul.list-inline
+                  -menu.each do |item| 
+                    %li
+                      %a{}= item
+    .text-center.relative#galeria
+      .absolute.white#tarjeta
+        %h2.title Galeria
+      -galeria_photos = [{name: "DrugsCare", image: "DSCF0037", date: "02/01/2018"},{name: "aplicacion de ANTZ", image: "DSCN1127", date: "02/01/2018"},{name: "aplicacion del CECYTE", image: "DSCF0303", date: "02/01/2018"},{name: "Evento de matenimiento", image: "DSCF0308", date: "02/01/2018"},{name: "ANTZ", image: "DSCF0311", date: "02/01/2018"},{name: "Prueba", image: "DSCF0330", date: "02/01/2018"},{name: "Prueba2", image: "DSCF0371", date: "02/01/2018"},{name: "video", image: "DSCN1218", date: "02/01/2018"}]
+
+      .row
+        -galeria_photos.each do |photo|
+          .col-md-4.col-lg-3.col-sm-6.col-xs-12.galery{style:"background-image:url(imgs/#{photo[:image]}-thumb.jpg)"}
+            .screen 
+              .row.middle-xs.full-height
+                .col-xs-12.white-text
+                  %h3= photo[:name]
+                  %p.no-margin= photo[:date]
+            
+    #slider
+      .inner
+        -gallery_imgs.each do |image|
+          .image{style:"background-image:url(/imgs/#{image});"}
+    .container
+      .card.white.black-text.text-center.relative
+        %h3.medium
+          ¿Que ofrece
+          %strong.medium CECYTE web? 
+        %p.medium.top-space
+          %strong CECYTE web
+          nos ofrece una plataforma util para la vida estudiantil con la finalidad
+          de apoyar a los estudiantes de una manera mas sencilla con mensajes grupales
+          foros encargados de un profesor, y material util proporcionado por el encargo academico
+    
+    .naranja.white-text.full-height#contacto
+      .row.middle-xs.full-height
+        .col-xs-12
+          .box
+            %form.white-text{action:"https://formspree.io/mjefe96@gmail.com",method:"POST",id:"contact-form",class:"step-form"}
+              .row.center-xs
+                .col-xs-2.col-md-1
+                  .box
+                .col-xs-5
+                  .box
+                    %fieldset.step.active
+                      %input{type:"email",name:"email",placeholder:"Coloca tu correo electrónico",class:"input"}
+                    %fieldset.step
+                      %input{type:"text",name:"name",placeholder:"Coloca tu nombre",class:"input"}
+                    %fieldset.step
+                      %textarea{name:"email",placeholder:"Escribe tu mensaje...",class:"input"}
+                    %div
+                      %button{type:"submit",class:"btn btn-success"}
+                        Enviar
+
+    %script{src:"http://code.jquery.com/jquery-3.2.1.min.js",
+      integrity:"sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=",
+      crossorigin:"anonymous"}
+    %script
+      window.jQuery || document.write("<script src='js/vendor/jquery-3.2.1.min.js'><\/script>")
+    %script{src: "js/jquery.min.js"}
+    %script{src: "js/form_object.js"}
+    %script{src: "js/main.js"}
+    %script{src: "js/steps.js"}
+    
